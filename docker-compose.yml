@@ -1,0 +1,42 @@
+
+services:
+
+  keycloak-db:
+    image: mysql:8.0
+    container_name: keycloak-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: testuser
+    ports:
+      - "3307:3306"
+    volumes:
+      - keycloak-db-data:/var/lib/mysql
+
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.2
+    container_name: keycloak
+    environment:
+      KC_HOSTNAME: auth.mrthaw.com
+      KC_DB: mysql
+      KC_DB_URL_HOST: keycloak-db
+      KC_DB_URL_DATABASE: keycloak
+      KC_DB_USERNAME: testuser
+      KC_DB_PASSWORD: testuser
+      KC_BOOTSTRAP_ADMIN_USERNAME: root
+      KC_BOOTSTRAP_ADMIN_PASSWORD: root
+    ports:
+      - "80:8080"
+    command: start-dev
+
+#  oauth2-auth:
+#    build: ./oauth2-fine-grained-authorization
+#    container_name: oauth2-auth
+#    ports:
+#      - "8080:8080"
+
+
+volumes:
+  keycloak-db-data:

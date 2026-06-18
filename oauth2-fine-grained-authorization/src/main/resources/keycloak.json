@@ -1,0 +1,15 @@
+{
+  "realm": "demo-realm",
+  "auth-server-url": "http://auth.mrthaw.com/",
+  "ssl-required": "external",
+  "resource": "oauth2-auth-test",
+  "verify-token-audience": true,
+  "credentials": {
+    "secret": "cxucYuhZ4Rq52IjHzTLx7Ko71yHrBmTY"
+  },
+  "use-resource-role-mappings": true,
+  "confidential-port": 0,
+  "policy-enforcer": {
+    "credentials": {}
+  }
+}

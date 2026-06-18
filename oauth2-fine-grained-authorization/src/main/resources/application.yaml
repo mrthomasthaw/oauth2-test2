@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: oauth2-fine-grained-authorization
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://auth.mrthaw.com/realms/demo-realm
+server:
+  port: 8083
+
+logging:
+  level:
+    org.springframework.security: TRACE
+    org.springframework.security.oauth2: TRACE
+    org.keycloak.adapters.authorization: TRACE
